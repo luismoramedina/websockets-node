@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>simple websocket</title>
+</head>
+<script type="text/javascript">
+   var connection = new WebSocket('ws://localhost:9030');
+
+   connection.onopen = function () {
+     console.info("onopen")
+   };
+
+   connection.onerror = function (error) {
+     console.error('onerror ' + error);
+   };
+
+   connection.onmessage = function (e) {
+      console.info('onmessage: ' + e.data);
+   };
+
+   function send() {
+      connection.send('info');
+      console.info("message sent");
+   }
+
+</script>
+<body>
+   <button onclick="send()">info</button>
+</body>
+</html>
